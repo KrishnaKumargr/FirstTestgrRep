@@ -32,7 +32,7 @@ public class SeleniumBasicTestWebManager {
 
 	public static void setBrowser() {
 		browser = "Chrome";
-		// browser = "Firefox";
+		//browser = "Firefox";
 	}
 
 	public static void setBrowserConfig() {
@@ -76,9 +76,8 @@ public class SeleniumBasicTestWebManager {
 		 * Click on drop down selection usimg rel xpath. This moved cursor focus to next
 		 * text box which is To field.
 		 */
-		driver.findElement(
-				By.xpath("/html/body/section/div[2]/main/section/div/div[2]/section/div/div[1]/div/ul/li[1]")).click();
-
+//		driver.findElement(By.xpath("/html/body/section/div[2]/main/section/div/div[2]/section/div/div[1]/div/ul/li[1]")).click();
+		driver.findElement(By.xpath("//li[@class='selected']")).click();
 		/*
 		 * Tried initially by sending text and then enter which failed to pick values
 		 * with a red highlight
@@ -96,9 +95,9 @@ public class SeleniumBasicTestWebManager {
 		// First bring the focus of cursor to the text field and enter the text so drop
 		// down displays
 		driver.findElement(By.id("dest")).sendKeys("Goa (All Locations)");
-		driver.findElement(
-				By.xpath("/html/body/section/div[2]/main/section/div/div[2]/section/div/div[2]/div/ul/li[1]")).click();
-
+		//driver.findElement(By.xpath("/html/body/section/div[2]/main/section/div/div[2]/section/div/div[2]/div/ul/li[1]")).click();
+		driver.findElement(By.xpath("//li[@class='selected']")).click();
+		
 		// Tried initially by sending text and then enter which failed to pick values
 		// with a red highlight
 		// To.sendKeys(Keys.ENTER);
@@ -111,10 +110,10 @@ public class SeleniumBasicTestWebManager {
 		// driver.findElement(By.xpath("/html/body/section/div[2]/main/section/div/div[2]/section/div/div[3]/div/input"));
 		// First bring the focus of cursor to the text field and enter the text so drop
 		// down displays
-		WebElement OnwardDate = driver.findElement(By.id("onward_cal"));
+			WebElement OnwardDate = driver.findElement(By.id("onward_cal"));
 		// driver.findElement(By.xpath("//label[@class='db text-trans-uc']")).click();
 		driver.findElement(
-				By.xpath("//div[@id='rb-calendar_onward_cal']//td[@class='current day'][contains(text(),'21')]"))
+				By.xpath("//div[@id='rb-calendar_onward_cal']//td[@class='current day'][contains(text(),'24')]"))
 				.click();
 		// Had to tab because cursor focus didnt jump to next field automatically.
 		OnwardDate.sendKeys(Keys.TAB);
@@ -137,8 +136,7 @@ public class SeleniumBasicTestWebManager {
 		WebElement ReturnDate = driver.findElement(By.id("return_cal"));
 		// This test case worked only by inspect element path on drop down using rel
 		// xpath
-		driver.findElement(By.xpath("//div[@id='rb-calendar_return_cal']//td[@class='wd day'][contains(text(),'26')]"))
-				.click();
+		driver.findElement(By.xpath("//div[@id='rb-calendar_return_cal']//td[@class='wd day'][contains(text(),'26')]")).click();
 
 		// struggled initially by sending data and enter, so tried all these.
 		// ReturnDate.sendKeys("19-Feb-2020");
@@ -155,6 +153,9 @@ public class SeleniumBasicTestWebManager {
 		// Alternate method by xpath
 		// driver.findElement(By.xpath("/html/body/section/div[2]/main/section/div/div[2]/section/div/button")).click();
 
+		String BusFound = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[1]/div[1]/span[1]/span")).getText();
+		System.out.println(BusFound +" Found");
+		
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
@@ -162,6 +163,6 @@ public class SeleniumBasicTestWebManager {
 			e.printStackTrace();
 		}
 
-		// driver.close();
+		driver.close();
 	}
 }
