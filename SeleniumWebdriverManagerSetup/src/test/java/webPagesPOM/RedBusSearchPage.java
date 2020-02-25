@@ -18,7 +18,8 @@ public class RedBusSearchPage {
 
 	By busTicketsSearchbtn = By.id("search_btn");
 
-	// By busesFoundResults = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[1]/div[1]/span[1]/span");
+	// By busesFoundResults =
+	// By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[1]/div[1]/span[1]/span");
 	By busesFoundResults = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[1]/div[1]/span[1]/span");
 
 	public RedBusSearchPage(WebDriver driver) {
@@ -28,9 +29,9 @@ public class RedBusSearchPage {
 	// Set Starting place name in from textbox
 	public void setFromLocation(String strFromLocation) {
 		driver.findElement(busTicketsFrom).sendKeys(strFromLocation);
-		//driver.findElement(busTicketsFrom).findElement(By.xpath("//li[@class='selected']")).click();
+		// driver.findElement(busTicketsFrom).findElement(By.xpath("//li[@class='selected']")).click();
 		driver.findElement(By.xpath("//li[@class='selected']")).click();
-			}
+	}
 
 	// Set destination place name in To textbox
 	public void setToLocation(String strToLocation) {
@@ -42,14 +43,16 @@ public class RedBusSearchPage {
 	public void setStartDate() {
 		driver.findElement(busTicketsOnwardDate);
 		driver.findElement(
-				By.xpath("//div[@id='rb-calendar_onward_cal']//td[@class='current day'][contains(text(),'25')]")).click();
+				By.xpath("//div[@id='rb-calendar_onward_cal']//td[@class='current day'][contains(text(),'25')]"))
+				.click();
 		driver.findElement(busTicketsOnwardDate).sendKeys(Keys.TAB);
 	}
 
 	// Set Return Date in Return Date calendar
 	public void setReturnDate() {
-		//driver.findElement(busTicketsReturndDate);
-		driver.findElement(By.xpath("//div[@id='rb-calendar_return_cal']//td[@class='wd day'][contains(text(),'28')]")).click();
+		// driver.findElement(busTicketsReturndDate);
+		driver.findElement(By.xpath("//div[@id='rb-calendar_return_cal']//td[@class='wd day'][contains(text(),'28')]"))
+				.click();
 	}
 
 	// Click on Search button

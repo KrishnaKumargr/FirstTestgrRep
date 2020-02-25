@@ -27,7 +27,6 @@ public class TestRedBusSearch {
 	public static void main(String[] args) {
 		setup();
 		TestSearchPage();
-
 	}
 
 	@BeforeSuite
@@ -39,12 +38,13 @@ public class TestRedBusSearch {
 		// attach only HtmlReporter
 		extent.attachReporter(htmlReporter);
 
-				// if (browser.contains("Chrome")) {
+		// if (browser.contains("Chrome")) {
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--disable-notifications");
 		driver = new ChromeDriver(options);
 	}
+
 	@Test
 	public static void TestSearchPage() {
 		// Create Redbus search page object.
@@ -53,15 +53,15 @@ public class TestRedBusSearch {
 		// creating tests
 		ExtentTest test = extent.createTest("This is to verify Redbus search results", "In Chrome browser");
 		test.log(Status.PASS, "pass");
-		
+
 		// info(details)
-        test.info("This test is to maximize the web browser from its default view");
-                		// To maximize browser
+		test.info("This test is to maximize the web browser from its default view");
+		// To maximize browser
 		driver.manage().window().maximize();
 
 		// To open redbus site
 		test.info("This test is to open redbus web page");
-				driver.get("https://www.redbus.in/");
+		driver.get("https://www.redbus.in/");
 
 		// Implicit wait
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -88,7 +88,7 @@ public class TestRedBusSearch {
 
 		// Verify the search results are displayed based on the given search criteria
 		test.info("This test is to Verify the search results are displayed based on the given search criteria.");
-		System.out.println(objSearch.busesFoundRes() +" found");
+		System.out.println(objSearch.busesFoundRes() + " found");
 		// objSearch.busesFoundRes();
 		// System.out.println(busesFoundRes +" Found");
 	}
