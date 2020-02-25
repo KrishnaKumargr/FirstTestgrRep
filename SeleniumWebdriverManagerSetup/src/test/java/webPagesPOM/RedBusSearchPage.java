@@ -22,6 +22,9 @@ public class RedBusSearchPage {
 	// By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[1]/div[1]/span[1]/span");
 	By busesFoundResults = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[1]/div[1]/span[1]/span");
 
+	By NobusesFoundResults1 = By.xpath("//h3[contains(text(),'Oops! No buses found.')]");
+	By NobusesFoundResults2 = By.xpath("//div[contains(text(),'There are no buses found in this route for the sel')]");
+
 	public RedBusSearchPage(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -43,8 +46,8 @@ public class RedBusSearchPage {
 	public void setStartDate() {
 		driver.findElement(busTicketsOnwardDate);
 		driver.findElement(
-				By.xpath("//div[@id='rb-calendar_onward_cal']//td[@class='current day'][contains(text(),'25')]"))
-				.click();
+				By.xpath("//div[@id='rb-calendar_onward_cal']//td[@class='current day'][contains(text(),'26')]"))
+		.click();
 		driver.findElement(busTicketsOnwardDate).sendKeys(Keys.TAB);
 	}
 
@@ -52,7 +55,7 @@ public class RedBusSearchPage {
 	public void setReturnDate() {
 		// driver.findElement(busTicketsReturndDate);
 		driver.findElement(By.xpath("//div[@id='rb-calendar_return_cal']//td[@class='wd day'][contains(text(),'28')]"))
-				.click();
+		.click();
 	}
 
 	// Click on Search button
@@ -61,7 +64,29 @@ public class RedBusSearchPage {
 	}
 
 	// Get the buses found search results after clicking on Search button
-	public String busesFoundRes() {
-		return driver.findElement(busesFoundResults).getText();
+	public void busesFoundRes() {
+		//
+		// if (busShown != null )
+		// //driver.findElement(busesFoundResults).getText();
+		// System.out.println(driver.findElement(busesFoundResults).getText() +"
+		// found");
+		//
+		// else {
+		// System.out.println(driver.findElement(NobusesFoundResults));
+		// }
+		try {
+			//String busShown = driver.findElement(busesFoundResults).getText();
+//			if(busShown != null) {
+			System.out.println(driver.findElement(busesFoundResults).getText() + " found");
+//			}
+//			else {
+//				System.out.println(driver.findElement(NobusesFoundResults1).getText());
+//				System.out.println(driver.findElement(NobusesFoundResults2).getText());
+//			}
+		} catch (Exception Error) {
+			System.out.println(driver.findElement(NobusesFoundResults1).getText());
+			System.out.println(driver.findElement(NobusesFoundResults2).getText());
+			//System.out.println("Something went wrong");
+		}
 	}
 }

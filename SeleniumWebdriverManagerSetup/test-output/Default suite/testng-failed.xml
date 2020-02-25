@@ -5,7 +5,7 @@
     <classes>
       <class name="webPagesTestPOM.TestRedBusSearch">
         <methods>
-          <include name="setup"/>
+          <include name="setBrowser"/>
           <include name="TestSearchPage"/>
           <include name="TeardownTest"/>
         </methods>

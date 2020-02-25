@@ -5,7 +5,6 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -30,6 +29,9 @@ public class TestRedBusSearch {
 	}
 
 	@BeforeSuite
+	//	public void setBrowser() {
+	//		
+	//	}
 	public static void setup() {
 		// initialize the HtmlReporter
 		htmlReporter = new ExtentHtmlReporter("RedbusSearchExtReport.html");
@@ -52,7 +54,7 @@ public class TestRedBusSearch {
 
 		// creating tests
 		ExtentTest test = extent.createTest("This is to verify Redbus search results", "In Chrome browser");
-		test.log(Status.PASS, "pass");
+		test.log(Status.PASS, "PASS");
 
 		// info(details)
 		test.info("This test is to maximize the web browser from its default view");
@@ -64,7 +66,7 @@ public class TestRedBusSearch {
 		driver.get("https://www.redbus.in/");
 
 		// Implicit wait
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 		// Verify Starting point text in from textbox.
 		test.info("This test is to Verify Starting point text in from textbox.");
@@ -74,7 +76,7 @@ public class TestRedBusSearch {
 		test.info("This test is to Verify destination point text in To textbox.");
 		objSearch.setToLocation("Mumbai (All Locations)");
 
-		// Verify the given start date 24th Feb is selected.
+		// Verify the given start date 26th Feb is selected.
 		test.info("This test is to Verify the given start date 24th Feb is selected.");
 		objSearch.setStartDate();
 
@@ -88,10 +90,8 @@ public class TestRedBusSearch {
 
 		// Verify the search results are displayed based on the given search criteria
 		test.info("This test is to Verify the search results are displayed based on the given search criteria.");
-		System.out.println(objSearch.busesFoundRes() + " found");
-		// objSearch.busesFoundRes();
-		// System.out.println(busesFoundRes +" Found");
-	}
+		objSearch.busesFoundRes();
+		}
 
 	@AfterSuite
 	// Test cleanup
